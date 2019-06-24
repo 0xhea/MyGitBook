@@ -5,5 +5,6 @@
 * [集合](ji-he.md)
 * [STL](stl.md)
 * [Algorithm](algorithm.md)
+* [Link](link.md)
 * [Other](other.md)
 
