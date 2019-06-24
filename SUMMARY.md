@@ -2,8 +2,8 @@
 
 * [Introduction](README.md)
 * [String](string.md)
-* [集合](ji-he.md)
-* [STL](stl.md)
+* [Container](container.md)
+* [泛型算法](generic_algorithm.md)
 * [Algorithm](algorithm.md)
 * [Link](link.md)
 * [Other](other.md)

@@ -38,11 +38,7 @@ private:
 
 
 
-sort不能调用非静态成员函数
 
-[bind函数](https://ask.csdn.net/questions/259500)
-
-[sort函数说明](https://blog.csdn.net/lym940928/article/details/89353485)
 
 
 
