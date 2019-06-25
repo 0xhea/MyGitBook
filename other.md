@@ -2,5 +2,5 @@
 
 ## 链表
 
-new
+* `ListNode *head = new ListNode();`
 
