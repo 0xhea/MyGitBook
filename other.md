@@ -4,3 +4,7 @@
 
 * `ListNode *head = new ListNode();`
 
+
+
+max min(algorithm)
+
