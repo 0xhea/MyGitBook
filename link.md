@@ -2,6 +2,8 @@
 
 ## GitBook
 
+* [GitBook 简明教程](http://www.chengweiyang.cn/gitbook/index.html#gitbook-)
+
 * [Bilibili Markdown介绍及Vscode插件](https://www.bilibili.com/video/av9442273?from=search&seid=17600562671023051459)
 * [CommonMark](http://www.commonmark.cn/w/)
 
