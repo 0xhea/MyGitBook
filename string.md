@@ -1,5 +1,7 @@
 # String
 
+* [String API](http://www.cplusplus.com/reference/string/string/)
+
 ## 1. 相关函数
 
 ### 1. find

@@ -29,3 +29,10 @@
 * [Mac终端软件安装利器：Homebrew](https://www.jianshu.com/p/2ca8a4e47dff)
 * [高逼格的Mac Bash Shell配色方案](https://www.jianshu.com/p/ac6f17283e68)
 
+
+
+## 工具
+
+* [Dash for macOS](https://kapeli.com/dash)
+
+* [C++ API](http://www.cplusplus.com/reference/)
