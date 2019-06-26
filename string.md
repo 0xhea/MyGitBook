@@ -12,7 +12,12 @@
 
 ### 2. substr
 
-* str2 = str.substr(begin, len) 拷贝str的一部分
+```
+string substr（size_t pos = 0，size_t len = npos）const;
+```
+
+* str2 = str.substr(begin, len) 拷贝str的一部分。
+* 从字符位置pos开始并跨越len字符（或直到字符串的结尾，以先到者为准）。
 
 ### 3. 判断函数
 
