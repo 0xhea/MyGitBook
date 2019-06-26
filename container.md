@@ -2,6 +2,18 @@
 
 ## 1. Vector
 
+### 删除容器中指定内容的元素
+
+```
+for (auto it = v.begin(); it != v.end();) {
+	if (*it == /* */) {
+		it = v.erase(it);
+	} else {
+		it++;
+	}
+}
+```
+
 
 
 ## 2. Stack 栈

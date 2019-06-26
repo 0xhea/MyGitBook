@@ -10,6 +10,9 @@
 
 ## 遗留问题
 
+[151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)  **时间复杂度和空间复杂度优化**
+[C++详细题解，用stack记录单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/solution/cxiang-xi-ti-jie-yong-stackji-lu-dan-ci-by-youlook/)
+
 **使用lamda表达式**
 
 

@@ -4,13 +4,27 @@
 
 ## 1. 相关函数
 
-### 1. find
+### 1. 查找
+
+#### find
 
 * 返回值: string::npos
 * size_t find (const string& str, size_t pos = 0) const;  //查找对象--string类对象
 * size_t find (const char* s, size_t pos = 0) const; //查找对象--字符串
 * size_t find (const char* s, size_t pos, size_t n) const;  //查找对象--字符串的前n个字符
 * size_t find (char c, size_t pos = 0) const;  //查找对象--字符
+
+#### find_first_of/find_first_not_of
+
+* *查找str中出现最早的**一个**字符*
+* `size_t find_first_of (const string& str, size_t pos = 0) const noexcept;`
+* 第二个参数为搜索开始的下标（包括）
+
+#### find_last_of/find_last_not_of
+
+* *查找str中出现最晚的**一个**字符*
+* `size_t find_last_of (const string& str, size_t pos = npos) const noexcept;`
+* 第二个参数为搜索截止的下标（包括）
 
 ### 2. substr
 
