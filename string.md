@@ -6,6 +6,8 @@
 
 ### 1. 查找
 
+* [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/submissions/)
+
 #### find
 
 * 返回值: string::npos
@@ -32,6 +34,8 @@
 string substr（size_t pos = 0，size_t len = npos）const;
 ```
 
+* ***第二个参数为长度***
+
 * str2 = str.substr(begin, len) 拷贝str的一部分。
 * 从字符位置pos开始并跨越len字符（或直到字符串的结尾，以先到者为准）。
 
@@ -42,6 +46,8 @@ string substr（size_t pos = 0，size_t len = npos）const;
 * 判断是否为字母 isalpha
 
 * 判断是否为空格 isspace
+
+
 
 ## 2. 反向字符串
 
