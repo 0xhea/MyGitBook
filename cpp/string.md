@@ -2,7 +2,7 @@
 
 * [String API](http://www.cplusplus.com/reference/string/string/)
 
-## 1. 相关函数
+## 相关函数
 
 ### 1. 查找
 
@@ -42,22 +42,33 @@ string substr（size_t pos = 0，size_t len = npos）const;
 ### 3. 判断函数
 
 * 判断是否为数字 isdigit
-
 * 判断是否为字母 isalpha
-
 * 判断是否为空格 isspace
 
-
-
-## 2. 反向字符串
+### 4. 反向字符串
 
 1. reverse(s);
 2. reverse(str.begin(), str.end());
 3. string s(str.rbegin(),str.rend());
 
+### 5. 与char \*转换
+
+* [C++ char*，const char*，string的相互转换](https://www.cnblogs.com/wuyepeng/p/9729943.html)
+
+1. string转const char*（c_str()）
+```
+const char* c_s = s.c_str();
+```
+
+2. const char*转string（直接赋值即可）
+```
+const char* c_s ="abc";
+string s(c_s);
+```
 
 
-## 3. 逻辑
+
+## 逻辑
 
 1. 判断两字符串组成字母是否相同，先排序
 
