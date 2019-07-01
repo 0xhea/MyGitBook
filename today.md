@@ -10,6 +10,13 @@
 
 ## 遗留问题
 
+```
+std::vector<int> ret;
+ret.reserve(A.size());  // 增加空间，不创建元素
+```
+
+
+
 **使用lamda表达式**
 
 **map初始化方法**

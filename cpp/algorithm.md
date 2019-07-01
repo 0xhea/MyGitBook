@@ -19,6 +19,12 @@
 
 
 
+## 3. 汉明距离
+
+* [1051. 高度检查器](https://leetcode-cn.com/problems/height-checker/)
+
+
+
 ## 思路
 
 ### String
