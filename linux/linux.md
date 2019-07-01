@@ -1,5 +1,25 @@
 # Linux
 
+## Kernel
+
+* **__user** 表明参数是一个用户空间的指针，不能在 kernel 代码中直接访问。也方便其它工具对代码进行检查。
+
+```
+#ifdef __CHECKER__
+# define __user __attribute__((noderef, address_space(1)))
+# define __kernel /* default address space */
+#else
+# define __user
+# define __kernel
+#endif
+```
+
+
+
+
+
+
+
 ## 加解压
 
 * [linux tar.gz zip 解压缩 压缩命令](https://www.cnblogs.com/wangluochong/p/7194037.html)
