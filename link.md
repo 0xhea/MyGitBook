@@ -29,6 +29,13 @@
 * [Mac终端软件安装利器：Homebrew](https://www.jianshu.com/p/2ca8a4e47dff)
 * [高逼格的Mac Bash Shell配色方案](https://www.jianshu.com/p/ac6f17283e68)
 
+快捷键
+
+* [mac里terminal的快捷键，再也不用按住退格键删整行了](http://blog.sina.com.cn/s/blog_4c75ae9e0102v7kf.html)
+* [Mac OS X 系统12个常用的文本编辑快捷键（移动、选中）](https://blog.csdn.net/PT1993/article/details/80001138)
+* [mac下的home键、end键以及insert键的替代](https://www.bbsmax.com/A/1O5E40DGJ7/)
+* [Mac使用delete键向后删除字符](https://blog.csdn.net/gnail_oug/article/details/79445775)
+
 
 
 ## 工具
