@@ -26,3 +26,8 @@ for (auto it = v.begin(); it != v.end();) {
 * s.push(); //将元素压入栈顶
 * [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
 
+
+
+## 3. deque队列
+
+[950. 按递增顺序显示卡牌](https://leetcode-cn.com/problems/reveal-cards-in-increasing-order/)
