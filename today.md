@@ -6,7 +6,7 @@
 
 [914. 卡牌分组](https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/)
 
-* 求数组中所有数是否存在公约数
+* 求数组中所有数是否存在公约数n
 
 [75. 颜色分类](https://leetcode-cn.com/problems/sort-colors/)
 

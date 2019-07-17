@@ -30,3 +30,8 @@
     * **升序** `sort(arr,arr+len,less<>(type));`
     * **降序** `sort(arr,arr+len,greater<>(type));`
 
+
+
+**求两个数的最大公约数**
+
+* `__gcd()`
