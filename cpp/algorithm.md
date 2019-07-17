@@ -9,6 +9,8 @@
 
 ## 2. KMP
 
+[很详尽KMP算法（厉害）](https://www.cnblogs.com/ZuoAndFutureGirl/p/9028287.html)
+
 
 
 ## 2.回溯算法

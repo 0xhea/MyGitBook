@@ -1,5 +1,13 @@
 # Link
 
+## NOW
+
+* [如何在 Github 上发现优秀的开源项目？](https://www.cnblogs.com/jycboy/p/6388674.html)
+
+
+
+
+
 ## GitBook
 
 * [GitBook 从懵逼到入门](https://blog.csdn.net/lu_embedded/article/details/81100704)
@@ -43,3 +51,4 @@
 * [Dash for macOS](https://kapeli.com/dash)
 
 * [C++ API](http://www.cplusplus.com/reference/)
+
