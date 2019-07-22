@@ -2,6 +2,7 @@
 
 * [Introduction](README.md)
 * C++
+    * [Basic](cpp/basic.md)
     * [String](cpp/string.md)
     * [Container](cpp/container.md)
     * [泛型算法](cpp/generic_algorithm.md)
@@ -10,6 +11,7 @@
 * Linux
     * [Linux](linux/linux.md)
     * [Shell](linux/shell.md)
+* [Tool](tool.md)
 * [Link](link.md)
 * [Today](today.md)
 

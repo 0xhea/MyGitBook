@@ -6,15 +6,3 @@
 
 
 
-## 指针
-
-
-
-* 空指针为**nullptr**
-
-
-
-
-
-max min(algorithm)
-
