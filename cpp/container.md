@@ -38,6 +38,34 @@ for (auto it = v.begin(); it != v.end();) {
 
 
 
-## 3. deque队列
+## 3. Map
+
+通过二叉树存储查找
+
+**遍历**
+
+```
+for(auto iter=maps.begin(); iter!=maps.end(); iter++)
+{
+	int i = iter->first;
+	string s = iter->second;
+}
+// 也可以通过下标遍历 string s = maps[i];
+```
+
+
+
+## 4. Hash_Map
+
+
+
+## 5. Set
+
+
+
+
+
+## 6. deque队列
 
 [950. 按递增顺序显示卡牌](https://leetcode-cn.com/problems/reveal-cards-in-increasing-order/)
+
