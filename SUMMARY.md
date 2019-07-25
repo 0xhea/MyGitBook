@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
+* [Basic](basic.md)
 * C++
     * [Basic](cpp/basic.md)
     * [String](cpp/string.md)
