@@ -4,6 +4,10 @@
 
 ## 未完成题目
 
+[120. 三角形最小路径和](https://leetcode-cn.com/problems/triangle/)
+
+* 多思路看一下
+
 [914. 卡牌分组](https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/)
 
 * 求数组中所有数是否存在公约数n
