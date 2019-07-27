@@ -29,16 +29,15 @@
 
 ## 思路
 
+* [73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)：通过原地存放标志位解决额外空间问题
+
+* [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)：瓶颈为短的
+
+* 迷宫问题，一般就提示我们回溯+DFS（深度优先搜索）
+
 ### String
 
 1. 判断两字符串组成字母是否相同，先排序
 2. 判断括号是否匹配用stack
    - [32. 最长有效括号](https://leetcode-cn.com/problems/longest-valid-parentheses/)
-
-### Other
-
-1. 迷宫问题，一般就提示我们回溯+DFS（深度优先搜索）
-
-2. [11. 盛最多水的容器](https://leetcode-cn.com/problems/container-with-most-water/)
-
 
