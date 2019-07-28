@@ -4,10 +4,6 @@
 
 ## 未完成题目
 
-[565. 数组嵌套](https://leetcode-cn.com/problems/array-nesting/)
-
-
-
 [914. 卡牌分组](https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/)
 
 * 求数组中所有数是否存在公约数n
@@ -21,6 +17,14 @@
 ***
 
 ## 遗留问题
+
+指向`vector<vector<int>>`的指针如何使用
+
+二维数组指针问题
+
+> [695. 岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island/)
+
+
 
 ```
 std::vector<int> ret;
