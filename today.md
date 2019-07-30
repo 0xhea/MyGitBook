@@ -4,6 +4,14 @@
 
 ## 未完成题目
 
+[927. 三等分](https://leetcode-cn.com/problems/three-equal-parts/)
+
+* 牛大了
+
+[365. 水壶问题](https://leetcode-cn.com/problems/water-and-jug-problem/)
+
+* 为什么可以转换为裴蜀定理
+
 [914. 卡牌分组](https://leetcode-cn.com/problems/x-of-a-kind-in-a-deck-of-cards/)
 
 * 求数组中所有数是否存在公约数n
