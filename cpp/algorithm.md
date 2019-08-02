@@ -27,6 +27,16 @@
 
 
 
+## 4. 排序
+
+### 桶排序
+
+[算法：排序算法之桶排序](https://blog.csdn.net/developer1024/article/details/79770240)
+
+[拜托，面试别再问我桶排序了！！！](https://blog.csdn.net/z50L2O08e2u4afToR9A/article/details/83513673)
+
+
+
 ## 思路
 
 * [73. 矩阵置零](https://leetcode-cn.com/problems/set-matrix-zeroes/)：通过原地存放标志位解决额外空间问题
