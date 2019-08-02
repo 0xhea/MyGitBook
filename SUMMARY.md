@@ -12,8 +12,10 @@
 * Linux
     * [Linux](linux/linux.md)
     * [Shell](linux/shell.md)
-* [Git](git.md)
-* [Tool](tool.md)
+* Tool
+    * [Git](tool/git.md)
+    * [Tool](tool/tool.md)
 * [Link](link.md)
+* [Book](book.md)
 * [Today](today.md)
 
