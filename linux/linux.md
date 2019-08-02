@@ -2,6 +2,145 @@
 
 ## Kernel
 
+### vmlinux.lds
+
+> [vmlinux.lds.s文件分析](https://blog.csdn.net/dahailantian1/article/details/78584841)
+> [vmlinux.lds的理解](https://www.veryarm.com/3733.html)
+
+
+
+### do_initcalls()  --init/main.c
+
+​		do_initcall函数通过for循环，由`__initcall_start`开始，直到`__initcall_end`结束，依次调用识别到的初始化函数。
+
+> [第3阶段——内核启动分析之start_kernel初始化函数(5)](https://www.cnblogs.com/lifexy/p/7366782.html)
+
+**do_initcalls的调用关系：**
+
+```
+init/main.c
+    start_kernel
+    rest_init
+	kernel_thread(kernel_init, NULL, CLONE_FS);
+	kernel_init_freeable
+	do_basic_setup();
+	do_initcalls();
+	do_initcall_level(level);
+	do_one_initcall(*fn);
+```
+
+
+
+### __define_initcall(fn, id)  --include/linux/init.h
+
+```c
+#define __define_initcall(fn, id) \
+	static initcall_t __initcall_name(fn, id) __used \
+	__attribute__((__section__(".initcall" #id ".init"))) = fn;
+```
+
+* `typedef int (*initcall_t)(void);`  initcall_t是一个参数为空，返回值为int的函数指针。
+* `#define __initcall_name(fn, id) __initcall_##fn##id` 定义一个函数指针名。
+* `__used`（GCC编译器指令）告诉编译器无论 GCC 是否发现这个函数的调用实例，都要使用这个函数。
+* `__attribute__((__section__("")))` 是为链接器指定链接的section，这里按照id将各个初始化函数放置到不同的.initcallX.init段中。
+  * [利用__attribute__((section()))构建初始化函数表与Linux内核init的实现](https://mp.weixin.qq.com/s?__biz=MzAwMDUwNDgxOA==&mid=2652663356&idx=1&sn=779762953029c0e0946c22ef2bb0b754&chksm=810f28a1b678a1b747520ba3ee47c9ed2e8ccb89ac27075e2d069237c13974aa43537bff4fba&mpshare=1&scene=1&srcid=0111Ys4k5rkBto22dLokVT5A&pass_ticket=bGNWMdGEbb0307Tm%2Ba%2FzAKZjWKsImCYqUlDUYPZYkLgU061qPsHFESXlJj%2Fyx3VM#rd)
+  * `__attribute__((section("name")))`是gcc编译器支持的一个编译特性（arm编译器也支持此特性），实现在编译时把某个函数/数据放到name的数据段中。
+  * `-T $(vmlinux-lds)`内核最顶层Makefile中使用自定义的链接脚本。
+  * `vmlinux-lds := arch/$(SRCARCH)/kernel/vmlinux.lds`
+* 最后将初始化函数指针赋值给了新定义的函数指针。
+
+
+
+### subsys_initcall / module_init
+
+​		subsys_initcall 和 module_init 都会在kernel启动时被 do_initcalls() 调用。
+
+> [linux模块(module_init)、子系统(subsys_initcall)入口函数详解](https://blog.csdn.net/asklw/article/details/79698422)
+
+```
+#define subsys_initcall(fn)		__define_initcall(fn, 4)  // subsys_initcall
+#define device_initcall(fn)		__define_initcall(fn, 6)  // module_init
+
+#define module_init(x)    __initcall(x)
+#define __initcall(fn) device_initcall(fn)
+```
+
+
+
+### EXPORT_SYMBOL()
+
+​		EXPORT_SYMBOL标签内定义的函数或者符号对全部内核代码公开，不用修改内核代码就可以在您的内核模块中直接调用，即使用EXPORT_SYMBOL可以将一个函数以符号的方式导出给其他模块使用。
+
+**使用方法**
+
+1. 在模块函数定义之后使用“EXPORT_SYMBOL（函数名）”来声明。
+2. 在调用该函数的另外一个模块中使用extern对之声明。
+3. 先加载定义该函数的模块，然后再加载调用该函数的模块，请注意这个先后顺序。
+
+
+
+### 注册 platform 驱动
+
+> [[驱动注册]platform_driver_register()与platform_device_register()](https://blog.csdn.net/ufo714/article/details/8595021)
+
+**步骤：**
+
+1. 注册设备platform_device_register
+2. 注册驱动platform_driver_register，过程中在系统寻找注册设备（根据.name)，找到后运行.probe进行初始化。
+
+#### platform_device_register()
+
+​		platform_device_系列函数，实际上是注册了一个叫platform的虚拟总线。使用约定是如果一个不属于任何总线的设备，例如蓝牙，串口等设备，都需要挂在这个虚拟总线上。
+
+#### platform_driver_register()
+
+​		在驱动程序的初始化函数中，调用了platform_driver_register() 注册 platform_driver。需要注意的是：**platform_driver 和 platform_device 中的 name 变量的值必须是相同的** 。这样在 platform_driver_register（） 注册时，会将当前注册的 platform_driver 中的 name 变量的值和已注册的所有 platform_device 中的 name 变量的值进行比较，只有找到具有相同名称的 platform_driver 才能注册成功。**当注册成功时，会调用 platform_driver 结构元素 probe 函数指针**。
+
+**注册过程：**
+
+```
+platform_driver_register(struct platform_driver drv)
+__platform_driver_register(drv, THIS_MODULE)
+driver_register(&drv->driver);
+bus_add_driver(drv);
+driver_attach(drv);
+bus_for_each_dev(drv->bus, NULL, drv, __driver_attach);
+error = fn(dev, data);  // 实际调用 __driver_attach
+driver_probe_device(drv, dev);
+really_probe(dev, drv);
+dev->bus->probe(dev); || drv->probe(dev);  // 最后调用probe
+```
+
+
+
+### container_of(ptr,type,member)
+
+​		已知结构体type的成员member的地址ptr，求解结构体type的起始地址。
+
+> [container of()函数简介](https://blog.csdn.net/s2603898260/article/details/79371024)
+
+```
+#define container_of(ptr, type, member) ({			\
+	const typeof( ((type *)0)->member ) *__mptr = (ptr);	\
+	(type *)( (char *)__mptr - offsetof(type,member) );})
+
+#define offsetof(TYPE, MEMBER)	((size_t)&((TYPE *)0)->MEMBER)
+```
+
+* typeof( ((type *)0)->member )：获取member的类型，typeof 是 C 语言的关键字。
+* offsetof 计算 MEMBER 成员的偏移
+
+
+
+### Kconfig
+
+​		Kconfig 服务于 `make menuconfig` 时出现的内核配置界面
+
+
+
+
+### 一些宏
+
 * **__user** 表明参数是一个用户空间的指针，不能在 kernel 代码中直接访问。也方便其它工具对代码进行检查。
 
 ```
@@ -14,27 +153,24 @@
 #endif
 ```
 
+__used
+
+__init
+
+`__attribute__`
+
+[C语言中`__attribute__`的用法](https://wenku.baidu.com/view/4016dcc55ebfc77da26925c52cc58bd6318693ab.html)
+
+__start
+
+[Linux内核 __setup宏分析](https://blog.csdn.net/zhangdaxia2/article/details/83177496)
+
 
 
 ## 内存管理
 
+[内存管理（一）node & zone](http://blog.chinaunix.net/uid-30282771-id-5171166.html)
+
 分页和分段
 
-
-
-
-
-## 加解压
-
-* [linux tar.gz zip 解压缩 压缩命令](https://www.cnblogs.com/wangluochong/p/7194037.html)
-
-1. \*.tar 用 tar –xvf 解压
-2. \*.gz 用 gzip -d或者gunzip 解压
-3. \*.tar.gz和\*.tgz 用 tar –xzf 解压
-4. \*.bz2 用 bzip2 -d或者用bunzip2 解压
-5. \*.tar.bz2用tar –xjf 解压
-6. \*.Z 用 uncompress 解压
-7. \*.tar.Z 用tar –xZf 解压
-8. \*.rar 用 unrar e解压
-9. \*.zip 用 unzip 解压
 

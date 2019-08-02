@@ -30,22 +30,28 @@
 
 ## 遗留问题
 
-进程间通信（IPC）
-
-设备节点是什么
-
 指向`vector<vector<int>>`的指针如何使用
 
 二维数组指针问题
 
 > [695. 岛屿的最大面积](https://leetcode-cn.com/problems/max-area-of-island/)
 
-arm
-
 ```
 std::vector<int> ret;
 ret.reserve(A.size());  // 增加空间，不创建元素
 ```
+
+
+
+#### linux
+
+进程间通信（IPC）
+
+Kconfig
+
+设备节点是什么
+
+arm架构
 
 
 

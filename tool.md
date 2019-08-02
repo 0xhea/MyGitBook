@@ -6,3 +6,5 @@ Valgrind是一套Linux下，开放源代码（GPL V2）的仿真调试工具的�
 
 可以用来检测内存是否有异常。
 
+### readelf
+
