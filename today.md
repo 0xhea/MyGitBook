@@ -53,6 +53,12 @@ Kconfig
 
 arm架构
 
+隐式空闲链表是什么
+
+[虚拟内存--隐式空闲链表](https://blog.csdn.net/itworld123/article/details/81209649)
+
+malloc/free的实现
+
 
 
 **使用lamda表达式**

@@ -167,10 +167,86 @@ __start
 
 
 
+## 进程管理
+
+从内核看，进程是分配系统资源（CPU、内存）的载体，为了管理进程，内核必须对每个进程所做的事情进行清楚的描述，这就是进程描述符，内核用task_struct结构体来表示进程，并且维护一个该结构体链表来管理所有进程。该结构体包含一些进程状态、调度信息等上千个成员，我们这里主要关注进程描述符里面的内存描述符（struct mm_struct mm）
+
+
+
 ## 内存管理
+
+### 内存节点 Node
+
+​		每个CPU都有自己的本地内存节点（memory node），而且还可以通过QPI总线访问其他CPU下挂的内存节点，只是访问本地内存要比访问其他CPU下的内存的速度高许多，一般经过一次QPI要增加30%的访问时延。
+
+### 内存域 Zone
+
+​		 由于一些特殊的应用场景，导致只能分配特定地址范围内的内存（比如老式的ISA设备DMA时只能使用前16M内存；比如kmalloc只能分配低端内存，而不能分配高端内存），因此在node中又将内存细分为zone。
+
+* **ZONE_DMA**：定义适合DMA的内存域，该区域的长度依赖于处理器类型。比如ARM所有地址都可以进行DMA，所以该值可以很大，或者干脆不定义DMA类型的内存域。而在IA-32的处理器上，一般定义为16M。
+* **ZONE_DMA32**：只在64位系统上有效，为一些32位外设DMA时分配内存。如果物理内存大于4G，该值为4G，否则与实际的物理内存大小相同。
+* **ZONE_NORMAL**：定义可直接映射到内核空间的普通内存域。在64位系统上，如果物理内存小于4G，该内存域为空。而在32位系统上，该值最大为896M。
+* **ZONE_HIGHMEM**：只在32位系统上有效，标记超过896M范围的内存。在64位系统上，由于地址空间巨大，超过4G的内存都分布在ZONE_NORMA内存域。
+* **ZONE_MOVABLE**：伪内存域，为了实现减小内存碎片的机制。
+
+### per-CPU
+
+​		per-CPU变量是linux系统一个非常有趣的特性，它为系统中的每个处理器都分配了该变量的副本。这样做的好处是，在多处理器系统中，当处理器操作属于它的变量副本时，不需要考虑与其他处理器的竞争的问题，同时该副本还可以充分利用处理器本地的硬件缓冲cache来提供访问速度。
+
+​		per-CPU按照存储变量的空间来源分为静态per-CPU变量和动态per-CPU变量，前者的存储空间是在代码编译时静态分配的，而后者的存储空间则是在代码的执行期间动态分配的。
+
+> [per-CPU变量](https://www.cnblogs.com/linhaostudy/p/10342667.html)
+
+
+
+#### cached地址和uncached地址的区别
+
+> [cached地址和uncached地址的区别](https://blog.csdn.net/linuxandroidwince/article/details/7638318)
+
+
 
 [内存管理（一）node & zone](http://blog.chinaunix.net/uid-30282771-id-5171166.html)
 
+[内核必须懂(五): per-CPU变量](https://www.jianshu.com/p/f67517b3a150)
+
 分页和分段
 
+内存映射
 
+
+
+## 设备管理
+
+内存映射 mmap
+
+[Linux驱动mmap内存映射](https://www.cnblogs.com/wanghuaijun/p/7624564.html)
+
+
+
+## 文件管理
+
+
+
+## 数据结构
+
+### klist
+
+​		 klist是list的线程安全版本，他提供了整个链表的自旋锁，查找链表节点，对链表节点的插入和删除操作都要获得这个自旋锁。klist的节点数据结构是klist_node,klist_node引入引用计数，只有点引用计数减到0时才允许该node从链表中移除。当一个内核线程要移除一个node，必须要等待到node的引用计数释放，在此期间线程处于休眠状态，为了方便线程等待，klist引入等待移除节点者结构体klist_waiter，klist-waiter组成klist_remove_waiters（内核全局变量）链表，为保护klist_remove_waiters线程安全，引入klist_remove_lock（内核全局变量）自旋锁。为方便遍历klist，引入了迭代器klist_iter。
+
+> [linux内核源代码分析----内核基础设施之klist](https://blog.csdn.net/qq_21435127/article/details/80805195)
+
+
+
+
+
+
+
+bigmem: 一种内核的模式\或是1G 以上内存的优化内核
+
+smp:    多处理器的模式\该模式可以打开多个CPU的支持\也可以打开P4超线程技术 
+
+up:     单处理器的模式
+
+
+
+[Linux内核源代码分析工具](http://www.itboth.com/d/ZbmeEr/linux)
