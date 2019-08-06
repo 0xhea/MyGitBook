@@ -13,4 +13,5 @@
 7. \*.tar.Z 用tar –xZf 解压
 8. \*.rar 用 unrar e解压
 9. \*.zip 用 unzip 解压
+10. \*.tar.xz 两步：1. xz -d \*.tar.xz; 2. tar -xvf \*.tar
 

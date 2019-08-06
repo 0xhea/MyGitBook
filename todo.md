@@ -1,6 +1,4 @@
-# Today
-
-
+# ToDo
 
 ## 未完成题目
 
@@ -73,17 +71,22 @@ malloc/free的实现
 
 ***
 
-## 扩展
+## 待学习
 
-[find函数用法](https://blog.csdn.net/flyyufenfei/article/details/65438665)
+1. Git (1 Day)
+   * git remote是什么
+2. MySql
+3. 汇编
+4. C语言深入
+5. Linux内核
+6. Linux命令
+7. Shell
 
 
 
 ***
 
-## To-Do
+## 扩展
 
-1. 学习Git (1 Day)
-
-* git remote是什么
+[find函数用法](https://blog.csdn.net/flyyufenfei/article/details/65438665)
 

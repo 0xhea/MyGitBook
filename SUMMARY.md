@@ -11,11 +11,17 @@
     * [Other](cpp/other.md)
 * Linux
     * [Linux](linux/linux.md)
+    * [进程管理](linux/进程管理.md)
+    * [内存管理](linux/内存管理.md)
+    * [设备管理](linux/设备管理.md)
+    * [文件管理](linux/文件管理.md)
+    * [Linux命令](linux/linux_cmd.md)
     * [Shell](linux/shell.md)
+* [Android](android.md)
 * Tool
     * [Git](tool/git.md)
     * [Tool](tool/tool.md)
 * [Link](link.md)
 * [Book](book.md)
-* [Today](today.md)
+* [Todo](todo.md)
 
