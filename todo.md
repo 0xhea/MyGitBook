@@ -73,16 +73,20 @@ malloc/free的实现
 
 ## 待学习
 
-1. Git (1 Day)
+1. Android Ion
+2. Linux内核
+3. C语言深入
+4. Linux命令
+5. Shell
+6. 汇编
+7. MySql
+
+
+
+**完成**
+
+1. Git
    * git remote是什么
-2. MySql
-3. 汇编
-4. C语言深入
-5. Linux内核
-6. Linux命令
-7. Shell
-
-
 
 ***
 
