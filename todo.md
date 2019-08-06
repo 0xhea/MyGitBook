@@ -2,6 +2,10 @@
 
 ## 未完成题目
 
+[436. 寻找右区间](https://leetcode-cn.com/problems/find-right-interval/)
+
+- 好好思考一下
+
 [927. 三等分](https://leetcode-cn.com/problems/three-equal-parts/)
 
 * 牛大了
