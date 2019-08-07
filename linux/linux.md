@@ -4,12 +4,17 @@
 
 1. 红黑树
    * [红黑树(一)之 原理和算法详细介绍](https://www.cnblogs.com/skywang12345/p/3245399.html)
+   * rbtree.c : __rb_insert
+
+UMA和NUMA
 
 [linux驱动题（含答案）](https://blog.csdn.net/ysh1042436059/article/details/86422815)
 
 [Leborn_db](https://blog.csdn.net/XD_hebuters)
 
 [Frying人生](https://blog.csdn.net/ysh1042436059)
+
+[list.h接口说明](https://blog.csdn.net/lmjjw/article/details/9833025)
 
 驱动开发
 
@@ -127,6 +132,12 @@ driver_probe_device(drv, dev);
 really_probe(dev, drv);
 dev->bus->probe(dev); || drv->probe(dev);  // 最后调用probe
 ```
+
+
+
+### misc_register
+
+???
 
 
 
