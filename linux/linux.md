@@ -5,22 +5,21 @@
 1. 红黑树
    * [红黑树(一)之 原理和算法详细介绍](https://www.cnblogs.com/skywang12345/p/3245399.html)
    * rbtree.c : __rb_insert
+2. UMA和NUMA
+3. 驱动开发
+   * [linux驱动题（含答案）](https://blog.csdn.net/ysh1042436059/article/details/86422815)
+4. 内核学习
+5. CGroup
 
-UMA和NUMA
+#### 内核学习总结
 
-[linux驱动题（含答案）](https://blog.csdn.net/ysh1042436059/article/details/86422815)
-
-[Leborn_db](https://blog.csdn.net/XD_hebuters)
-
-[Frying人生](https://blog.csdn.net/ysh1042436059)
-
-[list.h接口说明](https://blog.csdn.net/lmjjw/article/details/9833025)
-
-驱动开发
-
-内核学习
-
-* [Linux内核学习总结](https://www.cnblogs.com/lalacindy/p/5440843.html)
+> [tolimit](https://www.cnblogs.com/tolimit/)
+>
+> [Leborn_db](https://blog.csdn.net/XD_hebuters)
+>
+> [Frying人生](https://blog.csdn.net/ysh1042436059)
+>
+> [Linux内核学习总结](https://www.cnblogs.com/lalacindy/p/5440843.html)
 
 ## Kernel
 
@@ -204,7 +203,9 @@ __start
 
 > [linux内核源代码分析----内核基础设施之klist](https://blog.csdn.net/qq_21435127/article/details/80805195)
 
+### list
 
+[list.h接口说明](https://blog.csdn.net/lmjjw/article/details/9833025)
 
 
 
