@@ -32,9 +32,9 @@
 
 ### do_initcalls()  --init/main.c
 
-​		do_initcall函数通过for循环，由`__initcall_start`开始，直到`__initcall_end`结束，依次调用识别到的初始化函数。
-
 > [第3阶段——内核启动分析之start_kernel初始化函数(5)](https://www.cnblogs.com/lifexy/p/7366782.html)
+
+​		do_initcall函数通过for循环，由`__initcall_start`开始，直到`__initcall_end`结束，依次调用识别到的初始化函数。
 
 **do_initcalls的调用关系：**
 
@@ -74,9 +74,9 @@ init/main.c
 
 ### subsys_initcall / module_init
 
-​		subsys_initcall 和 module_init 都会在kernel启动时被 do_initcalls() 调用。
-
 > [linux模块(module_init)、子系统(subsys_initcall)入口函数详解](https://blog.csdn.net/asklw/article/details/79698422)
+
+​		subsys_initcall 和 module_init 都会在kernel启动时被 do_initcalls() 调用。
 
 ```
 #define subsys_initcall(fn)		__define_initcall(fn, 4)  // subsys_initcall
@@ -142,9 +142,9 @@ dev->bus->probe(dev); || drv->probe(dev);  // 最后调用probe
 
 ### container_of(ptr,type,member)
 
-​		已知结构体type的成员member的地址ptr，求解结构体type的起始地址。
-
 > [container of()函数简介](https://blog.csdn.net/s2603898260/article/details/79371024)
+
+​		已知结构体type的成员member的地址ptr，求解结构体type的起始地址。
 
 ```
 #define container_of(ptr, type, member) ({			\
@@ -199,9 +199,9 @@ __start
 
 ### klist
 
-​		 klist是list的线程安全版本，他提供了整个链表的自旋锁，查找链表节点，对链表节点的插入和删除操作都要获得这个自旋锁。klist的节点数据结构是klist_node,klist_node引入引用计数，只有点引用计数减到0时才允许该node从链表中移除。当一个内核线程要移除一个node，必须要等待到node的引用计数释放，在此期间线程处于休眠状态，为了方便线程等待，klist引入等待移除节点者结构体klist_waiter，klist-waiter组成klist_remove_waiters（内核全局变量）链表，为保护klist_remove_waiters线程安全，引入klist_remove_lock（内核全局变量）自旋锁。为方便遍历klist，引入了迭代器klist_iter。
-
 > [linux内核源代码分析----内核基础设施之klist](https://blog.csdn.net/qq_21435127/article/details/80805195)
+
+​		 klist是list的线程安全版本，他提供了整个链表的自旋锁，查找链表节点，对链表节点的插入和删除操作都要获得这个自旋锁。klist的节点数据结构是klist_node,klist_node引入引用计数，只有点引用计数减到0时才允许该node从链表中移除。当一个内核线程要移除一个node，必须要等待到node的引用计数释放，在此期间线程处于休眠状态，为了方便线程等待，klist引入等待移除节点者结构体klist_waiter，klist-waiter组成klist_remove_waiters（内核全局变量）链表，为保护klist_remove_waiters线程安全，引入klist_remove_lock（内核全局变量）自旋锁。为方便遍历klist，引入了迭代器klist_iter。
 
 ### list
 
