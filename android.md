@@ -14,9 +14,19 @@
 >
 > [Integrating the ION memory allocator](https://lwn.net/Articles/565469/)
 >
-> [内存管理 —— ION]([http://kernel.meizu.com/memory%20management%20-%20ion.html](http://kernel.meizu.com/memory management - ion.html))
+> [内存管理 —— ION](http://kernel.meizu.com/memory%20management%20-%20ion.html)
+>
+> [Android ION内存分配](https://yq.aliyun.com/articles/687839?spm=a2c4e.11155472.0.0.593533a9j3niWu)
 
 ION 的前任是 PMEM
+
+
+
+### ION 的作用
+
+1. 用户空间的进程之间或者内核空间的模块之间进行内存共享，而且这种共享可以是零拷贝的。
+2. 避免内存碎片化
+3. 为一些有着特殊内存需求的硬件，比如GPUs、display controller以及camera等，在系统启动的时候，会为他们预留一些memory pools，这些memory pools就由**ION**来管理。
 
 
 

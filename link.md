@@ -6,7 +6,13 @@
 
 
 
+## 学习笔记
 
+* [一个linux物联网人的学习笔记，有空可以看一下](https://blog.csdn.net/lu_embedded)
+
+
+
+***
 
 ## GitBook
 
@@ -19,11 +25,16 @@
 
 
 
-***
-
 ## Git
 
 * [Git廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
+
+
+
+## 工具
+
+* [Dash for macOS](https://kapeli.com/dash)
+* [C++ API](http://www.cplusplus.com/reference/)
 
 
 
@@ -44,11 +55,4 @@
 * [mac下的home键、end键以及insert键的替代](https://www.bbsmax.com/A/1O5E40DGJ7/)
 * [Mac使用delete键向后删除字符](https://blog.csdn.net/gnail_oug/article/details/79445775)
 
-
-
-## 工具
-
-* [Dash for macOS](https://kapeli.com/dash)
-
-* [C++ API](http://www.cplusplus.com/reference/)
 
