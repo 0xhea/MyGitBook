@@ -21,6 +21,10 @@
 >
 > [Linux内核学习总结](https://www.cnblogs.com/lalacindy/p/5440843.html)
 
+> [Linux 内核学习的经典书籍及途径？](https://www.zhihu.com/question/19606660)
+>
+> [Linux内核应该怎么去学习？](https://www.zhihu.com/question/58121772)
+
 ## Kernel
 
 ### vmlinux.lds
