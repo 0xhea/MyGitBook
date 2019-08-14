@@ -1,6 +1,10 @@
-# ToDo
+# To-Do
 
 ## 未完成题目
+
+[494. 目标和](https://leetcode-cn.com/problems/target-sum/)
+
+* 01背包？？？
 
 [436. 寻找右区间](https://leetcode-cn.com/problems/find-right-interval/)
 
