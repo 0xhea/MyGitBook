@@ -10,6 +10,8 @@
 
 * [一个linux物联网人的学习笔记，有空可以看一下](https://blog.csdn.net/lu_embedded)
 
+* [不是技术也能看懂云计算，大数据，人工智能](https://www.cnblogs.com/popsuper1982/p/8505203.html)
+
 
 
 ***

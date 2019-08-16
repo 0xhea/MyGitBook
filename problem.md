@@ -22,7 +22,7 @@
 工具
 
 1. 定位系统瓶颈 perf systemtap ebpf
-2. 熟悉 gdb、nm、addr2line、objdump、CodeWarrior、Trace32 等工具
+2. 熟悉 **gdb**、nm、addr2line、objdump、CodeWarrior、Trace32 等工具
 
 
 
