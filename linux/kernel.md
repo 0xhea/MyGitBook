@@ -25,6 +25,8 @@
 >
 > [Linux内核应该怎么去学习？](https://www.zhihu.com/question/58121772)
 
+
+
 ## Kernel
 
 ### vmlinux.lds
@@ -230,3 +232,4 @@ up:     单处理器的模式
 
 
 [Linux内核源代码分析工具](http://www.itboth.com/d/ZbmeEr/linux)
+

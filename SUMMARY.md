@@ -13,6 +13,7 @@
     * [Kernel](linux/kernel.md)
     * [进程管理](linux/进程管理.md)
     * [内存管理](linux/内存管理.md)
+    * [中断](linux/interrupt.md)
     * [设备管理](linux/设备管理.md)
     * [文件管理](linux/文件管理.md)
     * [Linux命令](linux/cmd.md)
