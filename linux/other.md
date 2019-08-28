@@ -3,6 +3,8 @@
 ## cgroup
 
 > [linux cgroups详细介绍](https://www.jb51.net/article/146162.htm)
+>
+> [Linux的Cgroup](https://blog.csdn.net/gaojy19881225/article/details/80019874)
 
 ​		实现 cgroups 的主要目的是为不同用户层面的资源管理提供一个统一化的接口。从单个任务的资源控制到操作系统层面的虚拟化，cgroups 提供了四大功能：
 
