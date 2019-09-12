@@ -6,5 +6,18 @@ Valgrind是一套Linux下，开放源代码（GPL V2）的仿真调试工具的�
 
 可以用来检测内存是否有异常。
 
-### readelf
+### readelf -l/--all [ELF]
 
+读取ELF（c语言编译形成的二进制文件）的信息。
+
+### ldd [ELF]
+
+查看链接库
+
+### objdump -d [ELF]
+
+反编译ELF文件
+
+### pmap [pid] / cat /proc/pid/maps
+
+查看进程内存映射情况
