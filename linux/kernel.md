@@ -200,6 +200,15 @@ __start
 
 
 
+#### likely(x)和unlikely(x)宏
+
+likely(x)等价于x，即if(likely(x))等价于if(x)，但是它告诉gcc，x取1的可能性比较大。
+unlikely(x)等价于x，即if(unlikely(x))等价于if(x)，但是它告诉gcc，x取0的可能性比较大。
+
+> [linux内核中的likely()和unlikely()宏的作用](https://blog.csdn.net/jasonchen_gbd/article/details/44968395)
+
+
+
 ### 为什么部分代码是汇编语言编写的
 
 1. linux内核中的底层程序直接与硬件打交道，需要一些专用的指令，而这些指令在C语言中并无对应的语言成分。
