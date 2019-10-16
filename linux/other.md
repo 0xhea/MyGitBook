@@ -22,6 +22,7 @@
 ## panic
 
 > [linux panic机制](https://blog.csdn.net/pansaky/article/details/90440356)
+> [深入 kernel panic 流程【转】](https://www.cnblogs.com/linhaostudy/p/9429511.html)
 
 painc是什么
 

@@ -29,11 +29,106 @@
 
 ## 4. 排序
 
+### 冒泡排序
+
+```c
+void bubbleSort(int* nums, int numsSize) {
+	int i, j, temp;
+	for (i = 0; i < numsSize - 1; i++) {
+		for (j = 1; j < numsSize - i; j++) {
+			if (nums[j - 1] > nums[j]) {
+				temp = nums[j - 1];
+				nums[j - 1] = nums[j];
+				nums[j] = temp;
+			}
+		}
+	}
+}
+```
+
+### 选择排序
+
+每次选择区间内最小的，放在区间前面。
+
+```c
+void selectSort(int* nums, int numsSize) {
+	int i, j, min;
+	for (i = 0; i < numsSize - 1; i++) {
+		for (min = i, j = i + 1; j < numsSize; j++) {
+			if (nums[j] < nums[min]) {
+				min = j;
+			}
+		}
+		swap(&nums[min], &nums[i]);
+	}
+}
+```
+
+### 插入排序
+
+将后面的数字插入到之前已经排好的序列中。
+
+```c
+void insertSort(int* nums, int numsSize) {
+	int i, j, k, temp;
+	for (i = 1; i < numsSize; i++) {
+		for (j = i; j > 0 && nums[j] < nums[j - 1]; j--) {
+			swap(&nums[j], &nums[j - 1]);
+		}
+	}
+}
+```
+
+### 快排
+
+选择基准，将大于基准的放在右侧，小于基准的放在左侧，然后递归，分而治之。
+
+```c
+void quickSort(int *nums, int begin, int end) {
+	int b = begin;
+	int e = end;
+	int flag = nums[begin];
+
+	if (begin >= end) {
+		return;
+	}
+
+	while (b < e) {
+		while (e > b && nums[e] >= flag) e--;
+		nums[b] = nums[e];
+
+		while (b < e && nums[b] <= flag) b++;
+		nums[e] = nums[b];
+	}
+	nums[b] = flag;
+
+	quickSort(nums, begin, b - 1);
+	quickSort(nums, e + 1, end);
+}
+
+int* sortArray(int* nums, int numsSize, int* returnSize) {
+	quickSort(nums, 0, numsSize - 1);
+	*returnSize = numsSize;
+
+	return nums;
+}
+```
+
+### 堆排序
+
+### 选择排序
+
+
+
 ### 桶排序
 
 [算法：排序算法之桶排序](https://blog.csdn.net/developer1024/article/details/79770240)
 
 [拜托，面试别再问我桶排序了！！！](https://blog.csdn.net/z50L2O08e2u4afToR9A/article/details/83513673)
+
+
+
+![img](https://img-blog.csdn.net/20180912224019565?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NzcwNjQx/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 
 
