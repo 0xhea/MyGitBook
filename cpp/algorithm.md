@@ -114,9 +114,70 @@ int* sortArray(int* nums, int numsSize, int* returnSize) {
 }
 ```
 
+### 归并排序
+
+通过递归，不断地将两个排好序的数组合并成一个数组。
+
+```
+void marge(int* nums, int left, int mid, int right) {
+	int left_size = mid - left + 1;
+	int right_size = right - mid;
+	int *left_arr, *right_arr;
+	int i, j, k;
+
+	left_arr = (int *)malloc(left_size * sizeof(int));
+	right_arr = (int *)malloc(right_size * sizeof(int));
+
+	for (i = 0; i < left_size; i++) {
+		left_arr[i] = nums[left + i];
+	}
+	for (i = 0; i < right_size; i++) {
+		right_arr[i] = nums[mid + 1 + i];
+	}
+
+	i = 0;
+	j = 0;
+	k = left;
+	while (i < left_size && j < right_size) {
+		if (left_arr[i] < right_arr[j]) {
+			nums[k++] = left_arr[i++];
+		}
+		else {
+			nums[k++] = right_arr[j++];
+		}
+	}
+
+	while (i < left_size) {
+		nums[k++] = left_arr[i++];
+	}
+	while (j < right_size) {
+		nums[k++] = right_arr[j++];
+	}
+
+	free(left_arr);
+	free(right_arr);
+}
+
+void margeSort(int *nums, int left, int right) {
+	if (left == right) {
+		return;
+	}
+
+	int mid = (left + right) / 2;
+
+	margeSort(nums, left, mid);
+	margeSort(nums, mid + 1, right);
+	marge(nums, left, mid, right);
+}
+```
+
+### 希尔排序
+
+增量不断缩小的的插入排序。
+
 ### 堆排序
 
-### 选择排序
+最大堆，用数组存放
 
 
 
