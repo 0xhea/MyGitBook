@@ -177,7 +177,42 @@ void margeSort(int *nums, int left, int right) {
 
 ### 堆排序
 
-最大堆，用数组存放
+堆排序是选择排序的改进。
+
+最大堆
+
+```
+void heapify(int *nums, int i, int n) {
+	if (2 * i + 1 >= n) {
+		return;
+	}
+
+	int child = 2 * i + 1;
+
+	if (2 * i + 2 < n && nums[child] < nums[child + 1]) {
+		child++;
+	}
+
+	if (nums[i] < nums[child]) {
+		swap(&nums[i], &nums[child]);
+	}
+
+	heapify(nums, child, n);
+}
+
+void heapSort(int *nums, int numsSize) {
+	int i;
+	for (i = (numsSize - 2) / 2; i >= 0; i--) {
+		heapify(nums, i, numsSize);
+		//printArr(nums, numsSize);
+	}
+
+	for (i = numsSize - 1; i > 0; i--) {
+		swap(&nums[0], &nums[i]);
+		heapify(nums, 0, i);
+	}
+}
+```
 
 
 
