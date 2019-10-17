@@ -2,12 +2,15 @@
 
 * [Introduction](README.md)
 * [Basic](basic.md)
+* Learn
+    * [Algorithms](learn/algorithms.md)
+    * [Data Structures](learn/data_structures.md)
+    * [Other](learn/other.md)
 * C++
     * [Basic](cpp/basic.md)
     * [String](cpp/string.md)
     * [Container](cpp/container.md)
     * [泛型算法](cpp/generic_algorithm.md)
-    * [Algorithm](cpp/algorithm.md)
     * [Other](cpp/other.md)
 * Linux
     * [Kernel](linux/kernel.md)

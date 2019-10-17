@@ -1,4 +1,4 @@
-# Algorithm
+# Algorithms
 
 ## 1. 最长回文子串
 
