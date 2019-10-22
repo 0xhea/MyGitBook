@@ -12,6 +12,8 @@
    * C++
    
    > [题目](https://leetcode-cn.com/explore/interview/card/bytedance/242/string/)
+   >
+   > [知乎](https://www.zhihu.com/question/339170325/answer/804164608)
 
 
 
