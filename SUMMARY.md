@@ -3,6 +3,7 @@
 * [Introduction](README.md)
 * [Basic](basic.md)
 * Learn
+    * [Basic](learn/basic.md)
     * [Algorithms](learn/algorithms.md)
     * [Data Structures](learn/data_structures.md)
     * [Other](learn/other.md)
