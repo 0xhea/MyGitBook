@@ -48,3 +48,14 @@ thread，锁，信号量
 > [关于堆栈的讲解(我见过的最经典的)](https://blog.csdn.net/yingms/article/details/53188974)
 
 
+
+### static
+
+> [C语言中static关键字的作用详解，全网最透彻](https://blog.csdn.net/tr_ainiyangyang/article/details/80965574)
+
+
+
+### static inline
+
+> [C 语法中static 和inline联合使用](https://www.cnblogs.com/thrillerz/p/5208579.html)
+

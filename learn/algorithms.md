@@ -118,7 +118,7 @@ int* sortArray(int* nums, int numsSize, int* returnSize) {
 
 通过递归，不断地将两个排好序的数组合并成一个数组。
 
-```
+```c
 void marge(int* nums, int left, int mid, int right) {
 	int left_size = mid - left + 1;
 	int right_size = right - mid;
