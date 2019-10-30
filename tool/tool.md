@@ -34,3 +34,25 @@ Valgrind是一套Linux下，开放源代码（GPL V2）的仿真调试工具的�
 >
 > [arm-eabi-addr2line android应用崩溃的调试方法](https://blog.csdn.net/tommy_wxie/article/details/12841735)
 
+
+
+### GCC
+
+
+
+### GDB
+
+```
+run
+list
+info line
+disassemble
+print
+display
+jump
+signal <signal>  // 产生一个信号量，发送给程序，通常是1~15
+return [expression]  // 强制函数返回，如果指定了expression，expression作为函数返回值
+call expr  // 强制调用函数，并显示函数的返回值（print expr有相同功能）
+```
+
+

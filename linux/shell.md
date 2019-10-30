@@ -15,3 +15,6 @@
 9. \*.zip 用 unzip 解压
 10. \*.tar.xz 两步：1. xz -d \*.tar.xz; 2. tar -xvf \*.tar
 
+
+
+time
