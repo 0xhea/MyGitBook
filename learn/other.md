@@ -20,6 +20,8 @@
    * 最早期的kernel代码
    * 内联和宏定义的区别
    * static的作用
+   * 计算机网络，每一层都有什么协议
+   * 编译原理
    
    > [题目](https://leetcode-cn.com/explore/interview/card/bytedance/242/string/)
    >
@@ -32,6 +34,8 @@
 readelf
 
 objdump -D
+
+addr2line
 
 DFS
 
