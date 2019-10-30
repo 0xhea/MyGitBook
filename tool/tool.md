@@ -56,3 +56,29 @@ call expr  // 强制调用函数，并显示函数的返回值（print expr有�
 ```
 
 
+
+### vim
+
+```
+u  // undo
+ctrl+r  // redo
+v  // visual模式，可以进行选择
+yy  // 复制
+cc  // 剪切
+p  // 粘贴
+ctrl+n  // 自动补全，选项中只会有已经出现过的单词
+ctrl+w  // 切换两个窗口的光标
+```
+
+插件管理系统
+
+vim-plug
+
+vim awesome  插件网站
+
+NERD tree  // 
+
+execute nerdtree automatically
+
+colorschemes
+
