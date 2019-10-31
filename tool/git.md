@@ -1,5 +1,7 @@
 # Git
 
+> [Git廖雪峰](https://www.liaoxuefeng.com/wiki/896043488029600)
+
 `git reflog` 查看命令历史，以便确定要回到未来的哪个版本。
 
 `git blame `查看每行代码最后提交
