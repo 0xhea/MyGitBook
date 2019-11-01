@@ -11,6 +11,8 @@
     * [Data Structures](learn/data_structures.md)
     * [Problems](learn/problems.md)
     * [Other](learn/other.md)
+    * For-offer
+        * [Note](learn/for-offer/note.md)
 * language
     * C++
         * [Basic](language/cpp/basic.md)

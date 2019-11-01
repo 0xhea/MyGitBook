@@ -1,5 +1,7 @@
 # Vim
 
+## Cmd
+
 ```
 u  // undo
 ctrl+r  // redo
@@ -14,7 +16,23 @@ ctrl+w  // 切换两个窗口的光标
 :vs 左右分屏
 
 zz  把当前行变为中心点
+:e 打开新文件
+:tabe 打开新标签
+
+ctrl+o  回到上一个位置
+ctrl+i  回到下一个位置
+
+ctrl+a  光标位置数字+1
+ctrl+x  光标位置数字-1
+
+gf  (goto file)打开光标位置的文件
 ```
+
+
+
+## vimrc
+
+
 
 
 

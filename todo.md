@@ -1,5 +1,15 @@
 # To-Do
 
+## 计划
+
+* leetcode刷题
+* C++
+* C基础
+* 网络编程
+* 数据库
+
+
+
 ## 未完成题目
 
 [494. 目标和](https://leetcode-cn.com/problems/target-sum/)
