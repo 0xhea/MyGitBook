@@ -34,11 +34,19 @@ echo $SHELL  查看当前使用shell
 chsh -s /bin/zsh  更改默认shell
 ```
 
-
-
 #### oh-my-zsh
 
+> [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+>
+> [git cmd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
 
+有些主题需要powerline字体
+
+`sudo apt-get install fonts-powerline`
+
+```
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```
 
 ### stow
 
@@ -55,4 +63,10 @@ chsh -s /bin/zsh  更改默认shell
 bash <(curl -L -s https://install.direct/go.sh)  // 有个timeout，应该删掉
 
 [ubuntu19.04安装调试v2ray客户端,以及配置代理](https://www.jianshu.com/p/77a652450f91)
+
+### vim
+
+> [vim-plug](https://github.com/junegunn/vim-plug)
+>
+> [vim awesome](https://vimawesome.com/)
 
