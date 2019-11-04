@@ -40,12 +40,11 @@ chsh -s /bin/zsh  更改默认shell
 >
 > [git cmd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
 
-有些主题需要powerline字体
-
-`sudo apt-get install fonts-powerline`
-
-```
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+```shell
+# plugin
+wget http://mimosa-pudica.net/src/incr-0.2.zsh
+sudo apt install fonts-powerline # 有些主题需要powerline字体
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
 ### stow
