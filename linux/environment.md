@@ -39,6 +39,8 @@ chsh -s /bin/zsh  更改默认shell
 > [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 >
 > [git cmd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git)
+>
+> [incr的修改](https://xuanyu.li/2018/04/12/zsh-incr/)
 
 ```shell
 # plugin
