@@ -32,7 +32,7 @@ gf  (goto file)打开光标位置的文件
 
 ## vimrc
 
-
+> [vim如何选择ESC的键位绑定](https://segmentfault.com/q/1010000000405321)
 
 
 

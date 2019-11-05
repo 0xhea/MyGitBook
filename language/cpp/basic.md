@@ -42,6 +42,24 @@ inline String::String(String &&other)  
 
 
 
+## 引用
+
+指向指针的引用：int *&r = p; （从右向左阅读）
+
+
+
+## const
+
+### constexpr
+
+常量表达式是指值不会改变并且在编译过程就能得到计算结果的表达式。
+
+#### constexpr指针
+
+初始化必须是nullptr或者0，或者是存储于某个固定地址中的对象（定义于所有函数体之外的对象）。
+
+constexpr int *q = nullptr;  // 说明q是指向整数的常量指针，与const不同，constexpr将定义的对象置为顶层const
+
 
 
 **使用new进行内存分配**
