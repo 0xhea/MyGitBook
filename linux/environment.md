@@ -71,3 +71,14 @@ bash <(curl -L -s https://install.direct/go.sh)  // 有个timeout，应该删掉
 >
 > [vim awesome](https://vimawesome.com/)
 
+
+
+### 服务器搭建
+
+```
+apt install python python-dev python3-dev
+apt install cmake build-essential
+apt install ranger neofetch
+apt install mysql-server
+```
+

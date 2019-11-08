@@ -5,6 +5,12 @@
 1. 在某些容器中 [] 可以用于添加元素，at则不行，比如：map
 2. at会检查下标的有效性，无效会抛出std::out_of_range异常，[] 则不会检查。*例外，在 array 中，两种操作都不会进行下标有效性检查*。
 
+## 数组
+
+int *pbeg = begin(ia);
+
+int *pend = end(ia);  // p106
+
 ## 1. Vector
 
 [C++ vector的内部实现原理及基本用法](https://blog.csdn.net/lmhlmh_/article/details/80545046)
