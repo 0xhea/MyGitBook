@@ -1,17 +1,6 @@
-# Container
+# 顺序容器
 
-## at 与 [] 的区别
-
-1. 在某些容器中 [] 可以用于添加元素，at则不行，比如：map
-2. at会检查下标的有效性，无效会抛出std::out_of_range异常，[] 则不会检查。*例外，在 array 中，两种操作都不会进行下标有效性检查*。
-
-## 数组
-
-int *pbeg = begin(ia);
-
-int *pend = end(ia);  // p106
-
-## 1. Vector
+## Vector
 
 [C++ vector的内部实现原理及基本用法](https://blog.csdn.net/lmhlmh_/article/details/80545046)
 
@@ -47,52 +36,35 @@ for (auto it = v.begin(); it != v.end();) {
 
 .back(): 返回最后一个元素
 
+### at 与 [] 的区别
 
-
-## 2. Stack 栈
-
-* ***top()才能查看元素，pop()不行***
-* s.empty(); //如果栈为空则返回true, 否则返回false
-* s.size(); //返回栈中元素的个数
-* s.top(); //返回栈顶元素, 但不删除该元素
-* s.pop(); //弹出栈顶元素, 但不返回其值
-* s.push(); //将元素压入栈顶
-* [151. 翻转字符串里的单词](https://leetcode-cn.com/problems/reverse-words-in-a-string/)
+1. 在某些容器中 [] 可以用于添加元素，at则不行，比如：map
+2. at会检查下标的有效性，无效会抛出std::out_of_range异常，[] 则不会检查。*例外，在 array 中，两种操作都不会进行下标有效性检查*。
 
 
 
-## 3. Map
+## array
 
-通过**红黑树**存储查找
+int *pbeg = begin(ia);
 
-**遍历**
-
-```
-for(auto iter=maps.begin(); iter!=maps.end(); iter++)
-{
-	int i = iter->first;
-	string s = iter->second;
-}
-// 也可以通过下标遍历 string s = maps[i];
-```
+int *pend = end(ia);  // p106
 
 
 
-## 4. Hash_Map
-
-通过hash表存储
-
-需要实现hash函数、比较函数（等与函数）
-
-
-
-## 5. Set
-
-
-
-
-
-## 6. deque队列
+## deque队列
 
 [950. 按递增顺序显示卡牌](https://leetcode-cn.com/problems/reveal-cards-in-increasing-order/)
 
+
+
+## list
+
+
+
+## forward_list
+
+
+
+## string
+
+> [string请转到string.md](string.md)

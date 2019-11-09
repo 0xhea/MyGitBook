@@ -16,10 +16,13 @@
 * language
     * C++
         * [Basic](language/cpp/basic.md)
-        * [String](language/cpp/string.md)
-        * [Container](language/cpp/container.md)
+        * Container
+            - [顺序容器](language/cpp/container/sequential_container.md)
+            - [String](language/cpp/container/string.md)
+            - [关联容器](language/cpp/container/associative_container.md)
+        * [数据结构](language/cpp/data_structures.md)
         * [泛型算法](language/cpp/generic_algorithm.md)
-        * [Other](language/cpp/other.md)
+        * [OOP](language/cpp/oop.md)
     * C
         * [Basic](language/c/basic.md)
 * Linux
@@ -34,6 +37,7 @@
         * [Other](linux/basic/other.md)
     * [Linux命令](linux/cmd.md)
     * [Shell](linux/shell.md)
+    * [环境搭建](linux/environment.md)
     * [vim](linux/vim.md)
 * Tool
     * [Git](tool/git.md)
