@@ -23,13 +23,22 @@
 
 #### 类型别名
 
+```
+typedef std::string::size_type pos;
+using pos = std::string::size_type;
+```
+
+#### 获取类型
+
 ##### decltype
 
-#### auto
+##### auto
 
 
 
 ## iostream
+
+io类属于不能被拷贝的类型，只能通过引用传递。并且，因为读取和写入的操作会改变流的内容，所以两个函数接受的都是普通引用，而非对常量的引用。
 
 #### cin
 
