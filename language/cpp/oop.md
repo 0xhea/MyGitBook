@@ -25,6 +25,13 @@
 
 可以通过在参数列表后面写上**`= default`**使用合成的默认构造函数。`= default`既可以和声明一起出现在类的内部，也可以作为定义出现在类的外部。
 
+使用默认构造函数进行初始化时，**不能在对象名后加括号**，否则会被识别成为函数定义。
+
+```c++
+Sales_data obj();  // 错误：声明了一个函数而非对象
+Sales_data obj2;   // 正确
+```
+
 ##### 构造函数初始值列表
 
 ```c++
@@ -33,12 +40,29 @@ Sales_data(const string &s, unsigned n, double p) :
     bookNo(s), units_sold(n), revenue(p * n) {}
 ```
 
+如果成员是const、引用，或者属于某种未提供默认构造函数的类类型，必须通过构造函数初始值列表为这些成员提供初始值。
+
+成员的初始化顺序与他们在类定义中的出现顺序一致，构造函数初始值列表中的前后位置关系不会影响初始化顺序。
+
+##### 委托构造函数
+
+一个委托构造函数使用他所属类的其他构造函数执行它自己的初始化过程。
+
+```
+Sales_data(const string &s, unsigned n, double p) : 
+	bookNo(s), units_sold(n), revenue(p * n) {}
+Sales_data() : Sales_data("", 0, 0) {}
+Sales_data(std::istream &is) : Sales_data() { read(is, *this) }
+```
+
+
+
 ##### 移动构造函数
 
 > 移动构造函数适用于：使用A对象初始化B之后，A对象就不需要再使用的情况。
 > [C++移动构造函数以及move语句简单介绍](https://www.cnblogs.com/qingergege/p/7607089.html) 
 
-**move()函数**
+###### move()函数:
 
 - move函数会将指针使用后置为空值
 - `vc.push_back(move(st));`  //执行后st.empty() = true
@@ -71,7 +95,43 @@ inline String::String(String &&other)  
 
 在类定义的内部添加**`friend`**开头的函数声明。
 
-友元的声明仅仅指定了访问的权限，而非一个通常意义上的函数声明。
+* 友元函数可以定义在类内部，这样的函数是隐式内联的。
+
+* 友元关系不存在传递性。（每个类负责控制自己的友元类或友元函数）
+
+```c++
+friend ostream &print(ostream &os, const Sales_data& item);  // 友元函数
+friend class Window_mgr;  // 友元类
+friend void Window_mgr::clear(ScreenIndex i);  // 友元成员函数，Window_mgr::clea必须在类之前被声明
+```
+
+类和非成员函数的声明不是必须在它们的友元声明之前。但是，如果想要使用友元，必须在友元声明后才行。
+
+* **友元的声明仅仅指定了访问的权限，而非一个通常意义上的函数声明。**
+
+```c++
+struct X {  // P252
+	friend void f() { /* 友元函数可以定义在类内部 */ }
+	X() { f(); }             // 错误：f还没被声明
+	void g();
+	void h();
+}
+void X::g() { return f(); }  // 错误：f还没有被声明
+void f();                    // 声明定义在X中的f()
+void X::h() { return f(); }  // 正确：现在f的声明在作用域中了。
+```
+
+### 类的作用域
+
+***返回类型中使用的名字位于类的作用域之外。***
+
+用`Screen::height`的形式可以访问类的成员。用`::height`的形式可以访问外层作用域的变量。
+
+#### 名字查找
+
+##### 用于类成员声明的名字查找
+
+内层作用于可以重新定义外层作用域中的名字，即使该名字已经在内层作用域中使用过。**然而在类中，如果成员使用了外层作用域中的某个名字，而该名字代表一种类型，则类不能在之后重新定义改名字。**（类型名定义通常出现在类的开始处）
 
 ### 类的其他特性
 
