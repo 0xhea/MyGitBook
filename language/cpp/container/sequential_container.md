@@ -231,11 +231,14 @@ for (auto it = v.begin(); it != v.end();) {
 
 
 
-## 内置数组
+## array
 
-int *pbeg = begin(ia);
+array可以拷贝或对象赋值操作。
 
-int *pend = end(ia);  // p106
+```
+array<int, 10> digits = { 0, 1, 2, 3, 4, 5 };
+array<int, 10> copy = digits;  // 只要数组类型匹配即可
+```
 
 
 
