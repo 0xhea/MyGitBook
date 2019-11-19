@@ -199,6 +199,77 @@ reserve 并不改变容器中元素的数量，它仅影响 vector 预先分配�
 
 
 
+## 容器适配器
+
+| 容器适配器     | 特点                                 |
+| -------------- | ------------------------------------ |
+| stack          | 栈。先进后出                         |
+| queue          | 队列。先进先出                       |
+| priority_queue | 优先队列。元素具有优先级，最高级先出 |
+
+| 操作                   | 所有容器适配器都支持的操作和类型                             |
+| ---------------------- | ------------------------------------------------------------ |
+| size_type              | 一种类型，足以保存当前类型的最大对象的大小                   |
+| value_type             | 元素类型                                                     |
+| container_type         | 实现适配器的底层容器类型                                     |
+| A a;                   | 创建一个名为 a 的空适配器                                    |
+| A a(c);                | 创建一个名为 a 的适配器，带有容器 c 的一个拷贝               |
+| 关系运算符             | 每个适配器都支持所有关系运算符：==、!=、<、<=、> 和 >=<br />这些运算符返回底层容器的比较结果 |
+| a.empty()              | 若 a 包含任何元素，返回 false，否则返回 true                 |
+| a.size()               | 返回 a 中的元素数目                                          |
+| swap(a, b) / a.swap(b) | 交换 a 和 b的内容，a 和 b 必须有相同类型，包括底层容器类型也必须相同 |
+
+**注：容器适配器不支持迭代器**
+
+### 定义一个适配器
+
+* 默认情况下，stack 和 queue 是基于 deque 实现的，priority_queue 是在 vector 基础之上实现的。
+* 我们可以在创建一个适配器时将一个命名的顺序容器作为第二个类型参数，来重载默认容器类型。
+
+```
+deque<int> deq{ 1, 2, 3, 4 };
+stack<int> stk(deq);
+stack<string, vector<string>> str_stk;         // 在vector上实现空栈
+stack<string, vector<string>> str_stk2(svec);  // 初始化时保存svec的拷贝
+```
+
+#### 适配器所使用容器的限制
+
+* 所有适配器都要求容器具有添加和删除元素的能力。因此，适配器不能构造在 array 之上。
+* 所有适配器都要求容器具有添加、删除以及访问尾元素的能力。因此，适配器不能构造在 forward_list 之上。
+* stack 只要求 push_back、pop_back 和 back 操作，因此可以使用除了 array 和 forward_list 之外的任何容器类型来构造 stack。
+* queue 适配器要求 back、push_back、front 和 push_front，因此他可以构造于 **list** 或 **deque** 之上，但不能基于 vector 构造。
+* priority_queue 除了 front、push_back 和 pop_back 操作之外还要求随机访问能力，因此它可以构造于 **vector** 和 **deque** 之上，但不能基于 list 构造。
+
+### 栈适配器
+
+栈默认基于 deque 实现，也可以在 list 或 vector 之上实现。
+
+| 栈适配器特有操作 | 说明                                                   |
+| ---------------- | ------------------------------------------------------ |
+| s.pop()          | 删除栈顶元素，但不返回该元素值                         |
+| s.push(item)     | 创建一个新元素压入栈顶，该元素通过拷贝或移动 item 而来 |
+| s.emplace(args)  | 创建一个新元素压入栈顶，该元素由 args 构造             |
+| s.top()          | 返回栈顶元素，但不将元素弹出栈                         |
+
+* 每个容器适配器都基于底层容器类型的操作定义了自己的特殊操作。我们只可以使用适配器操作，而不能使用底层容器类型的操作。
+
+### 队列适配器
+
+queue 默认基于 deque 实现，priority_queue 默认基于 vector 实现；
+
+queue 也可以用 list 或 vector 实现，priority_queue 也可以用 deque 实现。
+
+| 队列适配器特有操作   | 说明                                                         |
+| -------------------- | ------------------------------------------------------------ |
+| q.pop()              | 返回 queue 的首元素或 priority_queue 的最高优先级的元素，但不删除此元素 |
+| q.front() / q.back() | 返回首元素或尾元素，但不删除此元素，**只适用于 queue**       |
+| q.top()              | 返回最高优先级元素，但不删除该元素，**只适用于 priority_queue** |
+| q.push(item)         | 在 queue 末尾或 priority_queue 中恰当的位置创建一个元素，其值为 item |
+| q.emplace(args)      | 在 queue 末尾或 priority_queue 中恰当的位置创建一个元素，由 args 构造 |
+
+
+
 ## Vector
 
 [C++ vector的内部实现原理及基本用法](https://blog.csdn.net/lmhlmh_/article/details/80545046)
@@ -235,7 +306,7 @@ for (auto it = v.begin(); it != v.end();) {
 
 array可以拷贝或对象赋值操作。
 
-```
+```c++
 array<int, 10> digits = { 0, 1, 2, 3, 4, 5 };
 array<int, 10> copy = digits;  // 只要数组类型匹配即可
 ```
@@ -244,7 +315,10 @@ array<int, 10> copy = digits;  // 只要数组类型匹配即可
 
 ## 内置数组
 
-int *pbeg = begin(ia);
+内置数组类似迭代器的使用方法：
 
+```c++
+int *pbeg = begin(ia);
 int *pend = end(ia);  // p106
+```
 
