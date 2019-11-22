@@ -61,9 +61,9 @@ for_each(wc, word.end(),
 * for_each 函数捕获列表为空却还是可以使用 cout，是因为我们只对 lambda 所在函数中定义的（非 static）变量使用捕获列表。一个 lambda 可以直接使用定义在当前函数之外的名字。
 * 捕获列表只用于局部非 static 变量，lambda 可以直接使用局部 static 变量和他所在函数之外声明的名字。
 
-#### 捕获方式
+#### 捕获
 
-| 方式                 | 说明                                                         |
+| 捕获列表             | 说明                                                         |
 | -------------------- | ------------------------------------------------------------ |
 | []                   | 空捕获列表。lambda 不能使用所在函数中的变量。                |
 | [names]              | names 是一个逗号分隔的名字列表，这些名字都是 lambda所在函数的局部变量。<br />默认情况下，捕获列表中的变量都被拷贝。名字前如果使用了&，则采用引用捕获方式。 |
@@ -88,16 +88,184 @@ for_each(wc, word.end(),
 * 当混合使用隐式捕获和显示捕获时，捕获列表中的第一个元素必须是一个 & 或 =。此符号指定了默认捕获方式为引用或值。
 * 当混合使用隐式捕获和显示捕获时，显示捕获的变量必须使用与隐式捕获不同的方式。
 
+##### 可变 lambda （值拷贝才需要）
+
+* 默认情况下，对于一个值被拷贝的变量，lambda 不会改变其值。如果我们希望能改变一个被捕获的变量的值，就必须在参数列表首加上关键字 **mutable** 。因此，**可变 lambda 不能省略参数列表**。
+
+```c++
+void fcn3()
+{
+	size_t v1 = 42;
+	auto f = [v1] () mutable { return ++v1; };  // f 可以改变它所捕获的变量的值
+	v1 = 0;
+	auto j = f();  // j 为 43
+}
+```
+
+* 一个引用捕获的变量是否（如往常一样）可以修改依赖于此引用指向的是一个 const 类型还是一个非 const 类型。不需要加上 mutable。
+
+```c++
+void fcn4()
+{
+	size_t v1 = 42;  // 非 const
+	auto f2 = [&v1] { return ++v1; };
+	v1 = 0;
+	auto j = f2();  // j 为 1
+}
+```
+
+#### 返回类型
+
+如果一个 lambda 体包含 return 之外的任何语句，则编译器假定此 lambda 返回 void。此时，如果不希望返回 void，那么必须要指定返回类型。
+
+```c++
+transform(vi.begin(), vi.end(), vi.begin(),
+			[](int i) -> int
+			{ if (i < 0) return -i; else return i; });
+```
+
+### 参数绑定
+
+##### 标准库 bind 函数 ` <functional>`
+
+可以将 bind 函数看做一个通用的函数适配器，它接受一个可调用队形，生成一个新的可调用对象来“适应”原对象的参数列表。
+
+```c++
+auto newCallable = bind(callable, arg_list);
+```
+
+其中，newCallable 本身是一个可调用对象，arg_list 是一个逗号分隔的参数列表，对应给定的 callable 的参数。即，当我们调用 newCallable 时，newCallable 会调用 callable，并传递给它 arg_list 中的参数。
+
+arg_list 中的参数可能包含形如 \_n 的名字，其中 n 是一个整数。这些参数是“占位符”，表示 newCallable 的参数，它们占据了传递给 newCallable 的参数的“位置”。数值 n 表示生成的可调用对象中参数的位置：\_1 为 newCallable 的第一个参数，\_2 为第二个参数，依次类推。
+
+```c++
+auto wc = find_if(words.begin(), words.end(),
+					bind(check_size, placeholders::_1, sz));
+```
+
+bind 调用生成一个可调用对象，将 check_size 的第二个参数绑定到 sz 的值。只有一个占位符 \_1 表示 check_size 只接受单一参数。
+
+##### 使用 placeholds 名字
+
+名字 \_n 都定义在一个名为 placeholds 的命名空间中，而这个命名空间本身定义在 std 命名空间中。
+
+```c++
+using std::placeholders::_1;
+using namespace std::placeholders;
+```
+
+##### bind 的参数
+
+可以用 bind 绑定给定可调用对象中的参数或重新安排其顺序。
+
+```c++
+auto g = bind(f, a, b, _2, c, _1);  // f 是一个可调用对象，他有5个参数
+```
+
+##### 用 bind 重排参数顺序
+
+```c++
+sort(words.begin(), words.end(), isShorter);        // 按单词长度由短至长排序
+sort(words,begin(), words.end(), bind(isShorter, _2, _1));  // 由长至短排序
+```
+
+##### 绑定引用参数  ref 函数
+
+```c++
+for_each(words.begin(), words.end(),
+		[&os, c](const string &s) { os << s << c; });  // os和c都为局部变量
+// 用bind函数
+ostream &print(ostream &os, const string &s, char c)
+{
+	return os << s << c;
+}
+for_each(words.begin(), words.end(),
+		bind(print, ref(os), _1, ' '));
+```
+
+**ref** 函数 `<functional>`：返回一个对象，包含给定的引用，此对象是可以拷贝的。标准库中还有一个 **cref** 函数，生成一个保存 const 引用的类。
 
 
 
 ## 再探迭代器
 
+除了为每个容器定义了的迭代器之外，标准库在头文件 `<iterator>` 中还定义了额外几种迭代器。
+
+* 插入迭代器（insert iterator）：这些迭代器被绑定到一个容器上，可用来向容器插入元素。
+* 流迭代器（stream iterator）：这些迭代器被绑定到输入或输出流上，可用来遍历所关联的 IO 流。
+* 反向迭代器（reverse iterator）：这些迭代器向后而不是向前移动。除了 forward_list 之外的标准库容器都有反向迭代器。
+* 移动迭代器（move iterator）：这些专用的迭代器不是拷贝其中元素，而是移动他们。
+
 ### 插入迭代器
 
-#### back_inserter
+| 操作            | 说明                                                         |
+| --------------- | ------------------------------------------------------------ |
+| it = t          | 在 it 指定的当前位置插入值 t。假定 c 是 it 绑定的容器，依赖于插入迭代器的不同类型，<br />此赋值会分别调用 c.push_back(t)、c.push_front(t) 或 <br />c.insert(t, p)，其中 p为传递给 inserter 的迭代器位置 |
+| *it, ++it, it++ | 这些操作虽然存在，但不会对 it 做任何事情。每个操作都返回 it  |
 
-当我们通过 back_inserter 迭代器赋值时，赋值运算符会调用 push_back 将一个具有给定值的元素添加到容器中。
+插入器有三种类型，差异在于元素插入的位置：
+
+* **back_inserter** 创建一个使用 push_back 的迭代器。（只有容器支持 push_back 时才能使用）
+* **front_inserter** 创建一个使用 push_front 的迭代器。（只有容器支持 push_front 时才能使用）
+* **inserter** 创建一个使用 insert 的迭代器。此函数接受第二个参数，这个参数是一个指向给定容器的迭代器。元素将被插入到给定迭代器所表示的元素**之前**。
+
+```c++
+copy(lst.cbegin(), lst.cend(), front_inserter(lst2));  // 逆序
+copy(lst.cbegin(), lst.cend(), inserter(lst3, lst3.begin()));  // 与front_inserter不同，顺序
+```
+
+front_inserter 生成的迭代器会将插入的元素顺序颠倒过来，而 inserter 和 back_inserter 则不会。P358
+
+### iostream 迭代器
+
+istream_iterator 读取输入流，ostream_iterato，r 向一个输出流写数据。
+
+#### istream_iterator 操作
+
+待补充
+
+#### ostream_iterator 操作
+
+待补充
+
+```c++
+ostream_iterator<int> out_iter(cout, " ");
+copy(vec.begin(), vec.end(), out_iter);  // 打印所有元素
+```
+
+### 反向迭代器
+
+待补充
+
+
+
+## 泛型算法结构
+
+### 5类迭代器
+
+| 迭代器类别     | 说明                                 |
+| -------------- | ------------------------------------ |
+| 输入迭代器     | 只读，不写；单遍扫描，只能递增       |
+| 输出迭代器     | 只写，不读；单遍扫描，只能递增       |
+| 前向迭代器     | 可读写；多遍扫描，只能递增           |
+| 双向迭代器     | 可读写；多遍扫描，可递增递减         |
+| 随机访问迭代器 | 可读写；多遍扫描，支持全部迭代器运算 |
+
+待补充
+
+### 算法形参模式
+
+待补充
+
+### 算法命名规范
+
+待补充
+
+
+
+## 特定容器算法
+
+待补充
 
 
 
