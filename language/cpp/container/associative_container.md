@@ -31,6 +31,22 @@ for (const auto &w : word_count)
 
 ### 使用 set
 
+```c++
+map<string, size_t> word_count;
+set<string> exclude = { "The", "But", "And", "Or", "An", "A",
+                        "the", "but", "and", "or", "an", "A" };
+string word;
+whild (cin >> word)
+    if (exclude.find(word) == exclude.end())
+        ++word_count[word];
+```
+
+
+
+## 关联容器概述
+
+### 定义关联容器
+
 
 
 
