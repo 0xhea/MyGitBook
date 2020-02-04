@@ -1,5 +1,5 @@
 
-# 查询 SELECT
+# 查询(query) SELECT
 
 ## 基础查询
 

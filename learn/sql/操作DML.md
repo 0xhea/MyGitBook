@@ -1,4 +1,4 @@
-# 操作
+# 操作(modify)
 
 ## 插入 INSERT
 
@@ -48,6 +48,21 @@ VALUES(14, '唐艺昕1', '女', '1990-4-23', '1898888888', 2),
 # 支持子查询（插入查询语句的结果集）
 INSERT INTO beauty(id, NAME, phone)
 SELECT 26, '宋茜', '11809866';
+
+# 子查询
+INSERT INTO my_employees
+VALUES(1, 'patel', 'Ralph', 'Rpatel', 895),
+(2, 'Dancs', 'Betty', 'Bdancs', 860),
+(3, 'Biri', 'Ben', 'Bbiri', 1100),
+(4, 'Newman', 'Chad', 'Cnewman', 750),
+(5, 'Ropeburn', 'Audrey', 'Aropebur', 1550);
+# 等同于
+INSERT INTO my_employees
+SELECT 1, 'patel', 'Ralph', 'Rpatel', 895 UNION
+SELECT 2, 'Dancs', 'Betty', 'Bdancs', 860 UNION
+SELECT 3, 'Biri', 'Ben', 'Bbiri', 1100 UNION
+SELECT 4, 'Newman', 'Chad', 'Cnewman', 750 UNION
+SELECT 5, 'Ropeburn', 'Audrey', 'Aropebur', 1550;
 ```
 
 
