@@ -8,7 +8,13 @@
 
 
 
-## 数组
+## 运算符
+
+++ -- 是单独的语句
+
+
+
+## 数组（Array）
 
 ```go
 var a1 [3]bool
@@ -39,6 +45,8 @@ for i, v := range a3 {
 ```go
 a1 := [3][2]int{{1, 2}, {3, 4}, {5, 6}}
 ```
+
+
 
 ## 切片（slice）
 
@@ -95,4 +103,80 @@ a1 = append(a1[:2], a1[3:]...)  // 删除下标为2的元素，拼接
 ```
 
 
+
+## 函数
+
+```go
+func plus(x int, y int) int {  // 匿名返回值
+    return x + y
+}
+
+func plus(x int, y int) (ret int) {  // 命名返回值
+    ret = x + y
+    return  // 使用命名返回值，return后可省略
+}
+
+func f1() (int, string) {  // 多个返回值
+    return 10, "abc"
+}
+
+func plus(x, y, z int, m, n string) int {  // 类型一致的形参除最后一个可以省略类型
+    return x + y + z, m, n
+}
+
+func f2(x string, y ...int) {  // 可变长参数，y的类型是一个切片（类型是int）
+    fmt.Println(x, y)
+}
+```
+
+* 返回值可以命名也可以不命名，命名了相当于在函数中声明了一个变量
+* 函数可以有多个返回值，函数如果有多个返回值时，所有返回值必须用`()`包裹起来
+* 当形参中连续的多个参数的类型一致时，可以省略除最后一个形参的类型
+* 可变长参数必须放在函数参数的最后
+* **Go语言中函数没有默认参数这个概念**
+
+### defer 语句
+
+Go语言中的`defer`语句会将其后面跟随的语句进行延迟处理。在`defer`归属的函数即将返回时，将延迟处理的语句按`defer`定义的逆序进行执行，也就是说，先被`defer`的语句最后被执行，最后被`defer`的语句，最先被执行。
+
+### 函数类型
+
+函数可以作为参数，也可以作为返回值。
+
+### 匿名函数
+
+没有名字的函数。
+
+
+
+## 自定义类型/类型别名
+
+```go
+type 新类型名 旧类型名
+
+type myInt int     // 自定义类型
+type myInt2 = int  // 类型别名
+```
+
+
+
+## 结构体
+
+值类型
+
+```go
+type person struct {
+    name string
+    age int
+    hobby []string
+}
+```
+
+### 方法
+
+
+
+## 接口（interface）
+
+接口是一种类型
 
